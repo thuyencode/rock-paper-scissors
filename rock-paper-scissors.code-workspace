@@ -1,0 +1,38 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.addMissingImports": true
+    },
+    "files.associations": {
+      "*.css": "tailwindcss",
+      "*.scss": "tailwindcss"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.tabWidth": 2,
+    "prettier.useTabs": false,
+    "prettier.singleQuote": true,
+    "prettier.semi": false,
+    "prettier.jsxSingleQuote": true
+  },
+  "extensions": {
+    "recommendations": [
+      "bradlc.vscode-tailwindcss",
+      "christian-kohler.npm-intellisense",
+      "dbaeumer.vscode-eslint",
+      "formulahendry.auto-rename-tag",
+      "esbenp.prettier-vscode",
+      "christian-kohler.path-intellisense",
+      "dsznajder.es7-react-js-snippets"
+    ]
+  }
+}
