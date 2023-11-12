@@ -1,4 +1,3 @@
-import './index.css'
 import { Item } from './lib/definitions'
 import { getComputerChoice, playRound, validate } from './lib/utils'
 
