@@ -1,38 +1,58 @@
 import { Item } from './lib/definitions'
-import { getComputerChoice, playRound, validate } from './lib/utils'
+import { getEmoji, getComputerChoice, playRound } from './lib/utils'
 
 function game() {
+  const buttonsHtml = window.document.querySelectorAll('button')
+  const playerScoreHtml = window.document.querySelector('#playerScore')
+  const computerScoreHtml = window.document.querySelector('#computerScore')
+  const notificationHtml = window.document.querySelector('#notification')
+
   let playerScore = 0
   let computerScore = 0
 
-  for (let i = 0; i < 5; i++) {
-    let playerSelection: Item | undefined
-    let computerSelection: Item | undefined
+  buttonsHtml.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (playerScore >= 5 || computerScore >= 5) return
 
-    // Make sure the input is valid
-    while (!validate(playerSelection)) {
-      playerSelection = window
-        .prompt('Rock, paper or scissors?')
-        ?.toLowerCase() as Item | undefined
+      let computerSelection: Item | undefined
+      let playerSelection = button.id as Item
 
-      if (playerSelection === undefined) return
-    }
-
-    computerSelection = getComputerChoice()
-
-    // Make sure the random output is valid
-    if (computerSelection === undefined) {
       computerSelection = getComputerChoice()
-    }
 
-    const result = playRound(playerSelection, computerSelection)
+      // Make sure the random output is valid
+      if (computerSelection === undefined) {
+        computerSelection = getComputerChoice()
+      }
 
-    if (result === 1) playerScore++
-    else if (result === 0) computerScore++
-  }
+      const result = playRound(playerSelection, computerSelection)
 
-  window.alert(`Player's score: ${playerScore}
-Computer's score: ${computerScore}`)
+      switch (result) {
+        case 1:
+          playerScore++
+
+          playerScoreHtml!.textContent = playerScore.toString()
+          notificationHtml!.textContent = `🥳 You Win! ${getEmoji(
+            playerSelection,
+          )} beats ${getEmoji(computerSelection!)}`
+
+          break
+
+        case 0:
+          computerScore++
+
+          notificationHtml!.textContent = `😓 You Lose! ${getEmoji(
+            computerSelection!,
+          )} beats ${getEmoji(playerSelection)}`
+          computerScoreHtml!.textContent = computerScore.toString()
+
+          break
+
+        default:
+          notificationHtml!.textContent = "👌 It's a draw!"
+          break
+      }
+    })
+  })
 }
 
 game()

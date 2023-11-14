@@ -8,16 +8,48 @@
     <title>Rock, Paper and Scissors! Thuyen Code | The Odin Project</title>
     <script type="module" src="/src/main.ts" defer></script>
   </head>
-  <body class="mt-5 space-y-5 text-center">
-    <h1 class="text-3xl font-bold">Rock, Paper and Scissors!</h1>
-    <p class="text-xl">
-      In
-      <a
-        class="text-blue-400 underline hover:text-blue-500 active:text-blue-600"
-        href="https://www.theodinproject.com/lessons/foundations-rock-paper-scissors"
-        >Project: Rock Paper Scissors</a
+  <body class="font-sans text-slate-900 dark:bg-slate-900 dark:text-white">
+    <div
+      class="container mx-auto flex h-screen flex-col items-center justify-center gap-10"
+    >
+      <div
+        class="max-xs:flex-col xs:gap-5 inline-flex flex-row gap-2 rounded-md border-2 border-slate-300 p-3 font-mono text-2xl dark:border-slate-700"
       >
-      from The Odin Project
-    </p>
+        <p class="inline-flex items-center gap-2">
+          👨 <span id="playerScore">0</span>
+        </p>
+
+        <span class="max-xs:hidden">:</span>
+
+        <p class="inline-flex items-center gap-2">
+          <span class="max-xs:order-last" id="computerScore">0</span> 🤖
+        </p>
+      </div>
+
+      <div class="inline-flex flex-wrap justify-center gap-2">
+        <button
+          class="rounded-md border-2 border-slate-400 p-5 text-2xl hover:bg-slate-200 dark:border-slate-600 dark:hover:bg-slate-600 sm:text-4xl lg:text-5xl"
+          id="rock"
+        >
+          🪨
+        </button>
+        <button
+          class="rounded-md border-2 border-slate-400 p-5 text-2xl hover:bg-slate-200 dark:border-slate-600 dark:hover:bg-slate-600 sm:text-4xl lg:text-5xl"
+          id="paper"
+        >
+          📃
+        </button>
+        <button
+          class="rounded-md border-2 border-slate-400 p-5 text-2xl hover:bg-slate-200 dark:border-slate-600 dark:hover:bg-slate-600 sm:text-4xl lg:text-5xl"
+          id="scissors"
+        >
+          ✂️
+        </button>
+      </div>
+
+      <h1 class="text-center text-lg sm:text-2xl" id="notification">
+        ☝️ Make your choice
+      </h1>
+    </div>
   </body>
 </html>

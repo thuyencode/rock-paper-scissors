@@ -1,13 +1,6 @@
 import { items } from './constants'
 import { Item } from './definitions'
 
-export const capitalize = (str: string) =>
-  `${str.charAt(0).toUpperCase()}${str.slice(1)}`
-
-export function getItemValue(item: Item) {
-  return items[item]
-}
-
 export function getComputerChoice() {
   const value = Math.floor(Math.random() * 3)
 
@@ -16,39 +9,32 @@ export function getComputerChoice() {
 
 export function playRound(
   playerSelection: Item | undefined,
-  computerSelection: Item | undefined
+  computerSelection: Item | undefined,
 ) {
   if (playerSelection === undefined) return
   if (computerSelection === undefined) return
 
-  if (
-    (getItemValue(playerSelection) + 1) % 3 ===
-    getItemValue(computerSelection)
-  ) {
-    window.alert(
-      `You Lose! ${capitalize(computerSelection)} beats ${capitalize(
-        playerSelection
-      )}`
-    )
+  if ((items[playerSelection] + 1) % 3 === items[computerSelection]) {
     return 0
-  } else if (
-    getItemValue(playerSelection) === getItemValue(computerSelection)
-  ) {
-    window.alert("It's a draw!")
+  } else if (items[playerSelection] === items[computerSelection]) {
     return -1
   } else {
-    window.alert(
-      `You Win! ${capitalize(playerSelection)} beats ${capitalize(
-        computerSelection
-      )}`
-    )
     return 1
   }
 }
 
-export function validate(answer: string | undefined) {
-  if (answer === undefined) return false
-  if (answer in items) return true
+export function getEmoji(str: Item) {
+  switch (str) {
+    case 'paper':
+      return '📃'
 
-  return false
+    case 'rock':
+      return '🪨'
+
+    case 'scissors':
+      return '✂️'
+
+    default:
+      break
+  }
 }
