@@ -17,12 +17,7 @@
     },
     "[typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "prettier.tabWidth": 2,
-    "prettier.useTabs": false,
-    "prettier.singleQuote": true,
-    "prettier.semi": false,
-    "prettier.jsxSingleQuote": true
+    }
   },
   "extensions": {
     "recommendations": [
