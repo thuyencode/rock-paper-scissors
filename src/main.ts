@@ -1,7 +1,8 @@
-import { Item } from './lib/definitions'
-import { getEmoji, getComputerChoice, playRound } from './lib/utils'
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import type { Item } from './lib/definitions'
+import { getComputerChoice, getEmoji, playRound } from './lib/utils'
 
-function game() {
+function game(): void {
   const buttonsHtml = window.document.querySelectorAll('button')
   const playerScoreHtml = window.document.querySelector('#playerScore')
   const computerScoreHtml = window.document.querySelector('#computerScore')
@@ -15,7 +16,7 @@ function game() {
       if (playerScore >= 5 || computerScore >= 5) return
 
       let computerSelection: Item | undefined
-      let playerSelection = button.id as Item
+      const playerSelection = button.id as Item
 
       computerSelection = getComputerChoice()
 
@@ -32,7 +33,7 @@ function game() {
 
           playerScoreHtml!.textContent = playerScore.toString()
           notificationHtml!.textContent = `🥳 You Win! ${getEmoji(
-            playerSelection,
+            playerSelection
           )} beats ${getEmoji(computerSelection!)}`
 
           break
@@ -41,7 +42,7 @@ function game() {
           computerScore++
 
           notificationHtml!.textContent = `😓 You Lose! ${getEmoji(
-            computerSelection!,
+            computerSelection!
           )} beats ${getEmoji(playerSelection)}`
           computerScoreHtml!.textContent = computerScore.toString()
 
